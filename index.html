@@ -755,6 +755,98 @@
       word-break: keep-all;
     }
 
+    /* Packing list */
+    .pack-group {
+      text-align: left;
+      margin-top: 14px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,240,245,0.5));
+      border-radius: 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,182,193,0.18);
+    }
+    .pack-group:first-child { margin-top: 6px; }
+    .pack-group-head {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 0.98rem;
+      color: #6C5CE7;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pack-group.preg .pack-group-head { color: #E84393; }
+    .pack-group.cast .pack-group-head { color: #5A4A8A; }
+    .pack-group.foot .pack-group-head { color: #F57C00; }
+    .pack-group.docs .pack-group-head { color: #2196F3; }
+    .pack-group.health .pack-group-head { color: #00897B; }
+    .pack-group.tech .pack-group-head { color: #9D8AC9; }
+
+    .pack-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      font-size: 0.86rem;
+      color: #555;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      user-select: none;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+    .pack-item:hover { color: #333; }
+
+    .pack-check {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      border-radius: 6px;
+      border: 2px solid #FFB6C1;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .pack-item.checked .pack-check {
+      background: linear-gradient(135deg, #FF8AAB, #E84393);
+      border-color: transparent;
+    }
+    .pack-item.checked .pack-check::after {
+      content: '✓';
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+    .pack-item.checked {
+      color: #bbb;
+      text-decoration: line-through;
+    }
+    .pack-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      padding: 1px 6px;
+      border-radius: 6px;
+      margin-left: 4px;
+      background: #FFE4EC;
+      color: #E84393;
+      font-weight: 700;
+    }
+    .pack-tag.cast { background: #E0E7FF; color: #6C5CE7; }
+    .pack-tag.foot { background: #FFF3E0; color: #F57C00; }
+    .pack-progress {
+      margin-top: 16px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 12px;
+      font-size: 0.82rem;
+      color: #888;
+      font-family: 'Noto Sans KR', sans-serif;
+      text-align: center;
+    }
+    .pack-progress strong { color: #E84393; }
+
     /* Closing */
     .closing-card {
       background: linear-gradient(135deg, rgba(255,228,236,0.85), rgba(220,237,250,0.85));
@@ -1353,47 +1445,91 @@
 
       <div class="care-list">
         <div class="care-item preg">
-          <div class="care-head">🤰 누나 · 임산부 케어</div>
-          <div class="care-body">
-            • 회·날달걀·생햄·블루치즈 X (스시 가게 갈 때 익힌 것만)<br>
-            • 카페인 줄이기 (녹차/말차 디저트도 적당히)<br>
-            • 30분마다 앉아서 휴식 · 화장실 자주 (수족관·백화점 동선 좋음)<br>
-            • 일본 임산부 마크(マタニティマーク) 받으면 지하철 우대석 OK<br>
-            • 응급 시: 119 (구급차) · 호텔 컨시어지 즉시 호출
-          </div>
+          <div class="care-head">🤰 누나 · 임산부</div>
+          <div class="care-body">회·날달걀 X · 화장실 자주 · 임산부 마크 챙기기 · 30분마다 앉기</div>
         </div>
-
         <div class="care-item cast">
-          <div class="care-head">🦴 누나 팔 깁스</div>
-          <div class="care-body">
-            • 무거운 가방 X (매형/혁진이가 들기)<br>
-            • 좁은 가게·붐비는 곳 피하기 (이치란 같은 칸막이 좌석 X)<br>
-            • 비행기 짐칸 위 X — 좌석 아래 또는 도와달라고 요청<br>
-            • 깁스 비 안 맞게 큰 우산 + 비닐 한 장 챙기기
-          </div>
+          <div class="care-head">🦴 깁스 케어</div>
+          <div class="care-body">무거운 짐 매형/혁진 · 좁은 가게 X · 비닐 커버로 비 차단</div>
         </div>
-
         <div class="care-item foot">
-          <div class="care-head">🦶 엄마 발 통증</div>
-          <div class="care-body">
-            • 핵심: <strong>휠체어 적극 활용</strong> — 가이유칸·오사카성·백화점 모두 무료 대여<br>
-            • 푹신한 운동화 + 깔창. 새 신발 X<br>
-            • 하루 보행 거리 짧게 — 동선 짜놨으니 이대로<br>
-            • 저녁마다 따뜻한 물에 발 담그기 (호텔 욕조)<br>
-            • 통증 심하면 즉시 택시. 무리 X
-          </div>
+          <div class="care-head">🦶 엄마 · 발 통증</div>
+          <div class="care-body"><strong>휠체어 적극 활용</strong> (가이유칸·오사카성·백화점 무료) · 저녁 욕조 찜질</div>
         </div>
-
         <div class="care-item all">
           <div class="care-head">🌸 모두 함께</div>
-          <div class="care-body">
-            • 택시 적극 활용 (4명 이상이면 점보택시 미리 콜)<br>
-            • 식당 예약 — 자리 기다리지 않게<br>
-            • 누나·엄마 페이스에 맞추기. 사진은 천천히<br>
-            • 비 오는 날(목/금)은 무리 말고 호텔 일찍 복귀<br>
-            • 비상연락: 한국 영사관 콜센터 +82-2-3210-0404
-          </div>
+          <div class="care-body">택시·식당 예약 · 누나·엄마 페이스 맞추기 · 비상: 영사관 +82-2-3210-0404</div>
         </div>
+      </div>
+    </div>
+
+    <!-- Packing List -->
+    <div class="card" id="packingCard">
+      <div class="card-icon">🧳</div>
+      <div class="card-title">준비물 체크리스트</div>
+      <div class="card-subtitle">PACKING · TAP TO CHECK</div>
+
+      <div class="pack-group docs">
+        <div class="pack-group-head">📄 서류 · 금융</div>
+        <div class="pack-item"><span class="pack-check"></span><span>여권 6명분 + 사본</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>신용카드 (해외결제 활성화)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>엔화 현금 + 트래블카드</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>여행자 보험 증서</span></div>
+      </div>
+
+      <div class="pack-group">
+        <div class="pack-group-head">👕 옷 · 비 대비</div>
+        <div class="pack-item"><span class="pack-check"></span><span>얇은 외투 (밤 14~16°C)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>장우산 6개 (목/금/일 비)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>방수 재킷·우비</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>편한 운동화 + 푹신한 깔창</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>봄옷 (낮 25°C 대비 반팔)</span></div>
+      </div>
+
+      <div class="pack-group health">
+        <div class="pack-group-head">💊 약 · 건강</div>
+        <div class="pack-item"><span class="pack-check"></span><span>상비약 (소화제·해열제·지사제)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>밴드 · 파스 · 멀미약</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>마스크 · 손소독제</span></div>
+      </div>
+
+      <div class="pack-group preg">
+        <div class="pack-group-head">🤰 누나 (임산부) <span class="pack-tag">PREG</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>임산부 수첩 + 산모 정보</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>임산부 비상약 (의사 처방)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>엽산 · 철분 영양제</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>임산부 마크 (한국 거 OK)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>보온 텀블러 (따뜻한 물)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>편한 임부복 + 무릎담요</span></div>
+      </div>
+
+      <div class="pack-group cast">
+        <div class="pack-group-head">🦴 누나 (깁스) <span class="pack-tag cast">CAST</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>깁스 방수 비닐 커버 (3~4장)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>대형 우산</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>크로스백 (한 손 가방)</span></div>
+      </div>
+
+      <div class="pack-group foot">
+        <div class="pack-group-head">🦶 엄마 (발 케어) <span class="pack-tag foot">FOOT</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>푹신한 깔창 + 발가락 패드</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>마사지볼 / 폼롤러 (작은 거)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>찜질팩 (호텔 욕조 활용)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>슬리퍼 (호텔용)</span></div>
+      </div>
+
+      <div class="pack-group tech">
+        <div class="pack-group-head">📱 전자 · 기타</div>
+        <div class="pack-item"><span class="pack-check"></span><span>일본 콘센트 어댑터 (A타입)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>멀티탭 (110V 호환)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>보조배터리 6개 (기내 휴대)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>카메라 / 셀카봉</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>지퍼백 (젖은 옷·우산용)</span></div>
+        <div class="pack-item"><span class="pack-check"></span><span>도시락통 (남은 음식 보관)</span></div>
+      </div>
+
+      <div class="pack-progress">
+        체크 <strong id="packCount">0</strong> / <span id="packTotal">0</span> · 화면 새로고침해도 저장돼요
       </div>
     </div>
 
@@ -1473,6 +1609,33 @@
       document.querySelectorAll('.day-tab').forEach(t => t.classList.toggle('active', t.dataset.day == n));
       document.querySelectorAll('.day-content').forEach(c => c.classList.toggle('active', c.dataset.day == n));
     }
+
+    // Packing checklist (localStorage persisted)
+    (function initPacking() {
+      const items = document.querySelectorAll('.pack-item');
+      const total = items.length;
+      const totalEl = document.getElementById('packTotal');
+      const countEl = document.getElementById('packCount');
+      if (totalEl) totalEl.textContent = total;
+      const saved = JSON.parse(localStorage.getItem('osaka-pack') || '{}');
+
+      function updateCount() {
+        const checked = document.querySelectorAll('.pack-item.checked').length;
+        if (countEl) countEl.textContent = checked;
+      }
+
+      items.forEach((item, idx) => {
+        const key = 'p' + idx;
+        if (saved[key]) item.classList.add('checked');
+        item.addEventListener('click', () => {
+          item.classList.toggle('checked');
+          saved[key] = item.classList.contains('checked');
+          localStorage.setItem('osaka-pack', JSON.stringify(saved));
+          updateCount();
+        });
+      });
+      updateCount();
+    })();
   </script>
 </body>
 </html>
