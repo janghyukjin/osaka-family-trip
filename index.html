@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오사카 가족여행 ✈️ 大阪</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Jua&family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;700&family=Great+Vibes&family=Sawarabi+Mincho&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Jua', sans-serif;
+      overflow-x: hidden;
+      background: linear-gradient(180deg, #FFE4EC 0%, #FFF0F5 18%, #E8F4F8 38%, #DFF4E4 60%, #FFF8E1 82%, #FFFDE7 100%);
+      color: #444;
+      position: relative;
+      word-break: keep-all;
+    }
+
+    /* Sun */
+    .sun {
+      position: fixed;
+      top: 4%; right: 8%;
+      width: 70px; height: 70px;
+      background: #FFD86B;
+      border-radius: 50%;
+      box-shadow: 0 0 50px #FFD86B, 0 0 100px rgba(255,216,107,0.3);
+      z-index: 0;
+      animation: sunPulse 3s ease-in-out infinite;
+    }
+    @keyframes sunPulse {
+      0%, 100% { box-shadow: 0 0 50px #FFD86B, 0 0 100px rgba(255,216,107,0.3); }
+      50% { box-shadow: 0 0 70px #FFD86B, 0 0 140px rgba(255,216,107,0.4); }
+    }
+
+    /* Clouds */
+    .cloud {
+      position: fixed;
+      background: white;
+      border-radius: 50px;
+      opacity: 0.75;
+      z-index: 1;
+    }
+    .cloud::before, .cloud::after {
+      content: '';
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+    }
+    .cloud-1 { width: 110px; height: 36px; top: 9%; left: -150px; animation: cloudDrift 22s linear infinite; }
+    .cloud-1::before { width: 46px; height: 46px; top: -23px; left: 18px; }
+    .cloud-1::after { width: 60px; height: 50px; top: -28px; left: 48px; }
+    .cloud-2 { width: 150px; height: 44px; top: 18%; left: -200px; animation: cloudDrift 30s linear infinite 6s; opacity: 0.55; }
+    .cloud-2::before { width: 60px; height: 56px; top: -28px; left: 24px; }
+    .cloud-2::after { width: 76px; height: 60px; top: -32px; left: 56px; }
+    @keyframes cloudDrift {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(100vw + 300px)); }
+    }
+
+    /* Sakura petals */
+    .petal {
+      position: fixed;
+      top: 0;
+      font-size: 1.4rem;
+      z-index: 1;
+      pointer-events: none;
+      animation: petalFall linear forwards;
+      will-change: transform;
+    }
+    @keyframes petalFall {
+      0% { opacity: 0; transform: translateY(-30px) rotate(0deg) translateX(0); }
+      8% { opacity: 0.95; }
+      25% { transform: translateY(25vh) rotate(110deg) translateX(40px); }
+      50% { transform: translateY(50vh) rotate(220deg) translateX(-35px); }
+      75% { transform: translateY(75vh) rotate(330deg) translateX(38px); }
+      92% { opacity: 0.9; }
+      100% { opacity: 0; transform: translateY(108vh) rotate(450deg) translateX(-20px); }
+    }
+    @keyframes petalSway {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(40px); }
+    }
+
+    /* Osaka castle silhouette */
+    .castle-bg {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(700px, 100vw);
+      height: auto;
+      z-index: 0;
+      opacity: 0.18;
+      pointer-events: none;
+      filter: drop-shadow(0 -4px 12px rgba(108,92,231,0.15));
+    }
+    .castle-bg svg { width: 100%; height: auto; display: block; }
+
+    /* Distant mountains behind castle */
+    .mountains-bg {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 180px;
+      z-index: 0;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+    .mountains-bg svg { width: 100%; height: 100%; display: block; }
+
+    /* Sections */
+    .section {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    /* Intro card */
+    .intro-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.92), rgba(255,228,236,0.85));
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 50px 30px;
+      max-width: 440px;
+      width: 92%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      animation: cardFloat 4s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #FFB6C1, #B5EAD7, #C7CEEA, #FFDAC1, #FFB6C1);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .dday {
+      display: inline-block;
+      background: linear-gradient(135deg, #FF8AAB, #E84393);
+      color: white;
+      padding: 5px 18px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+      animation: ddayPulse 2s ease-in-out infinite;
+      letter-spacing: 1px;
+    }
+    @keyframes ddayPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    .plane-icon {
+      font-size: 3.6rem;
+      margin-bottom: 12px;
+      display: inline-block;
+      animation: planeFly 3s ease-in-out infinite;
+    }
+    @keyframes planeFly {
+      0%, 100% { transform: translateX(0) rotate(-8deg); }
+      50% { transform: translateX(10px) rotate(8deg); }
+    }
+
+    .intro-jp {
+      font-family: 'Sawarabi Mincho', serif;
+      font-size: 1.2rem;
+      color: #FF8AAB;
+      letter-spacing: 8px;
+      margin-bottom: 6px;
+    }
+
+    .intro-name {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: clamp(1.8rem, 6.5vw, 2.8rem);
+      color: #6C5CE7;
+      margin-bottom: 8px;
+      word-break: keep-all;
+      background: linear-gradient(135deg, #6C5CE7, #FF8AAB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .intro-sub {
+      font-size: 1.05rem;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .intro-dates {
+      display: inline-block;
+      background: rgba(255,255,255,0.6);
+      padding: 8px 18px;
+      border-radius: 14px;
+      font-size: 1rem;
+      color: #555;
+      margin-top: 14px;
+      border: 1px dashed #FFB6C1;
+    }
+
+    .scroll-hint {
+      font-size: 0.95rem;
+      color: #B5A4E3;
+      animation: bounceDown 1.5s ease-in-out infinite;
+      margin-top: 28px;
+    }
+    .scroll-arrow { display: block; font-size: 1.4rem; margin-top: 5px; }
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* Cards */
+    .detail-section { padding: 60px 20px; }
+
+    .card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.92), rgba(255,240,245,0.82));
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 36px 26px;
+      max-width: 460px;
+      width: 92%;
+      text-align: center;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.06);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      margin-top: 30px;
+    }
+    .card:first-child { margin-top: 0; }
+    .card.visible { opacity: 1; transform: translateY(0); }
+
+    .card-icon { font-size: 2.6rem; margin-bottom: 12px; }
+    .card-title {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.6rem;
+      color: #6C5CE7;
+      margin-bottom: 6px;
+    }
+    .card-subtitle {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    /* Family grid */
+    .family-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .family-member {
+      background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,228,236,0.5));
+      border-radius: 16px;
+      padding: 16px 8px;
+      transition: transform 0.25s;
+      border: 1px solid rgba(255,182,193,0.25);
+    }
+    .family-member:hover { transform: translateY(-3px) scale(1.04); }
+    .fm-emoji { font-size: 2rem; margin-bottom: 4px; }
+    .fm-name {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1rem;
+      color: #444;
+    }
+    .fm-role {
+      font-size: 0.72rem;
+      color: #999;
+      margin-top: 2px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .fm-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      padding: 2px 6px;
+      border-radius: 8px;
+      margin-top: 4px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+    }
+    .fm-tag.preg { background: #FFE4EC; color: #E84393; }
+    .fm-tag.cast { background: #E0E7FF; color: #6C5CE7; }
+    .fm-tag.foot { background: #FFF3E0; color: #F57C00; }
+    .fm-tag.baby { background: #C7F0DB; color: #00B894; }
+
+    /* Hotel card */
+    .hotel-highlight {
+      background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,228,236,0.5));
+      border: 1px solid rgba(255,138,171,0.2);
+      border-radius: 18px;
+      padding: 22px 18px;
+      margin-bottom: 14px;
+    }
+    .hotel-stars {
+      display: inline-flex;
+      gap: 2px;
+      background: linear-gradient(135deg, #FFD86B, #FFA000);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .hotel-name {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.5rem;
+      color: #444;
+      margin-bottom: 2px;
+    }
+    .hotel-name-en {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.2rem;
+      color: #FF8AAB;
+      margin-bottom: 12px;
+    }
+    .hotel-desc {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.6;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .hotel-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .hotel-info-item {
+      background: rgba(255,255,255,0.6);
+      border-radius: 12px;
+      padding: 10px 12px;
+      text-align: left;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .hotel-info-label {
+      font-size: 0.68rem;
+      color: #999;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+    .hotel-info-value {
+      font-size: 0.88rem;
+      color: #333;
+      font-weight: 700;
+    }
+    .hotel-perks {
+      margin-top: 14px;
+      text-align: left;
+    }
+    .hotel-perks-title {
+      font-size: 0.78rem;
+      color: #6C5CE7;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+    .hotel-perk {
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.7;
+      padding-left: 6px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .hotel-access {
+      margin-top: 14px;
+      background: rgba(232,244,253,0.5);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: left;
+    }
+    .hotel-access-title {
+      font-size: 0.78rem;
+      color: #2196F3;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+    .hotel-route-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      font-size: 0.85rem;
+      color: #555;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .hotel-route-icon { font-size: 1.1rem; min-width: 22px; }
+    .hotel-route-time {
+      margin-left: auto;
+      background: linear-gradient(135deg, #74B9FF, #2196F3);
+      color: white;
+      padding: 2px 9px;
+      border-radius: 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Flight card */
+    .flight-route {
+      background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(232,244,253,0.5));
+      border-radius: 16px;
+      padding: 18px 16px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(108,92,231,0.15);
+    }
+    .flight-route:last-child { margin-bottom: 0; }
+    .flight-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .flight-label.go { background: linear-gradient(135deg, #FF8AAB, #E84393); color: white; }
+    .flight-label.back { background: linear-gradient(135deg, #6C5CE7, #74B9FF); color: white; }
+    .flight-line {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+    }
+    .flight-airport { text-align: center; }
+    .flight-airport.right { text-align: center; }
+    .flight-time {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.4rem;
+      color: #444;
+    }
+    .flight-code {
+      font-size: 0.7rem;
+      color: #999;
+      font-family: 'Noto Sans KR', sans-serif;
+      letter-spacing: 1px;
+      margin-top: 1px;
+    }
+    .flight-arrow {
+      font-size: 1.4rem;
+      color: #FF8AAB;
+      animation: flightPulse 2s ease-in-out infinite;
+    }
+    @keyframes flightPulse {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+    }
+    .flight-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: #888;
+      font-family: 'Noto Sans KR', sans-serif;
+      justify-content: center;
+    }
+    .flight-meta span {
+      background: rgba(255,255,255,0.6);
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+    .flight-duration {
+      text-align: center;
+      font-size: 0.72rem;
+      color: #B5A4E3;
+      font-family: 'Noto Sans KR', sans-serif;
+      margin-top: 4px;
+    }
+
+    /* Weather grid (4 days) */
+    .weather-days {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .weather-day {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 14px;
+      border-left: 4px solid #C7CEEA;
+      text-align: left;
+    }
+    .weather-day.rainy { border-left-color: #74B9FF; background: linear-gradient(135deg, rgba(232,244,253,0.7), rgba(255,255,255,0.6)); }
+    .weather-day.sunny { border-left-color: #FFD86B; background: linear-gradient(135deg, rgba(255,248,225,0.8), rgba(255,255,255,0.6)); }
+    .weather-day.cloudy { border-left-color: #B5A4E3; background: linear-gradient(135deg, rgba(245,242,255,0.8), rgba(255,255,255,0.6)); }
+
+    .wd-date {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .wd-day {
+      font-size: 0.7rem;
+      color: #999;
+      font-family: 'Noto Sans KR', sans-serif;
+      display: block;
+      margin-top: -2px;
+    }
+    .wd-icon { font-size: 2rem; }
+    .wd-info { font-size: 0.95rem; color: #555; }
+    .wd-cond {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 2px;
+    }
+    .wd-temp {
+      font-size: 0.85rem;
+      color: #777;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .wd-pop {
+      font-size: 0.75rem;
+      color: #74B9FF;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+    .wd-pop-split {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+      font-size: 0.7rem;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .wd-pop-split span {
+      background: rgba(116,185,255,0.15);
+      color: #2196F3;
+      padding: 2px 7px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+    .wd-pop-split span.high { background: rgba(255,138,171,0.2); color: #E84393; }
+    .wd-pop-split span.low  { background: rgba(255,216,107,0.25); color: #F57C00; }
+    .wd-best {
+      font-size: 0.62rem;
+      background: linear-gradient(135deg, #FFD86B, #FFA000);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 8px;
+      margin-top: 4px;
+      display: inline-block;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      animation: bestGlow 2s ease-in-out infinite;
+    }
+    @keyframes bestGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,216,107,0.4); }
+      50% { box-shadow: 0 0 14px 3px rgba(255,216,107,0.3); }
+    }
+    .weather-source {
+      margin-top: 14px;
+      font-size: 0.72rem;
+      color: #aaa;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    /* Itinerary */
+    .day-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding: 4px 0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .day-tab {
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(108,92,231,0.2);
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: 'Jua', sans-serif;
+      font-size: 0.88rem;
+      color: #888;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+    .day-tab.active {
+      background: linear-gradient(135deg, #6C5CE7, #FF8AAB);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 6px 16px rgba(108,92,231,0.25);
+    }
+
+    .day-content { display: none; }
+    .day-content.active { display: block; animation: fadeIn 0.4s ease; }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .day-header {
+      background: linear-gradient(135deg, rgba(255,182,193,0.35), rgba(199,206,234,0.35));
+      padding: 14px;
+      border-radius: 14px;
+      margin-bottom: 14px;
+    }
+    .day-weather-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 12px;
+      font-size: 0.78rem;
+      color: #666;
+      margin-top: 6px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .day-title {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.15rem;
+      color: #444;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 26px;
+      text-align: left;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, #FFB6C1, #C7CEEA, #B5EAD7);
+    }
+    .tl-item {
+      position: relative;
+      padding: 10px 0 10px 8px;
+      margin-bottom: 4px;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -22px;
+      top: 16px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid #FF8AAB;
+      box-shadow: 0 0 0 3px rgba(255,138,171,0.15);
+    }
+    .tl-time {
+      font-size: 0.78rem;
+      color: #FF8AAB;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .tl-place {
+      font-size: 1.02rem;
+      color: #333;
+      font-weight: bold;
+      margin-top: 1px;
+    }
+    .tl-desc {
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 3px;
+      line-height: 1.55;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .tl-care {
+      font-size: 0.75rem;
+      color: #00897B;
+      margin-top: 4px;
+      padding: 4px 8px;
+      background: rgba(178,235,204,0.4);
+      border-radius: 6px;
+      display: inline-block;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .tl-care.warn { color: #C2185B; background: rgba(255,228,236,0.6); }
+
+    /* Care guide */
+    .care-list {
+      text-align: left;
+      margin-top: 6px;
+    }
+    .care-item {
+      background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,240,245,0.5));
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      border-left: 4px solid #FFB6C1;
+    }
+    .care-item.preg { border-left-color: #E84393; }
+    .care-item.cast { border-left-color: #6C5CE7; }
+    .care-item.foot { border-left-color: #F57C00; }
+    .care-item.all  { border-left-color: #00B894; }
+    .care-head {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 6px;
+    }
+    .care-body {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.6;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    /* Closing */
+    .closing-card {
+      background: linear-gradient(135deg, rgba(255,228,236,0.85), rgba(220,237,250,0.85));
+    }
+    .closing-text {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.4rem;
+      color: #6C5CE7;
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+    .closing-sub {
+      font-size: 0.92rem;
+      color: #888;
+      margin-top: 14px;
+      line-height: 1.7;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .closing-sign {
+      margin-top: 20px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.5rem;
+      color: #FF8AAB;
+    }
+
+    /* Sparkle trail on click */
+    .sparkle-trail {
+      position: fixed;
+      pointer-events: none;
+      z-index: 999;
+      font-size: 1.2rem;
+      animation: sparkleUp 1.4s ease-out forwards;
+    }
+    @keyframes sparkleUp {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-80px) scale(0.3); }
+    }
+
+    @media (max-width: 380px) {
+      .family-grid { grid-template-columns: repeat(2, 1fr); }
+      .weather-day { grid-template-columns: 60px 1fr auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sun"></div>
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+
+  <!-- Distant mountains -->
+  <div class="mountains-bg">
+    <svg viewBox="0 0 1200 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,180 L0,120 Q60,90 120,100 Q180,110 240,75 Q300,40 360,60 Q420,80 480,55 Q540,30 600,50 Q660,70 720,45 Q780,20 840,55 Q900,90 960,70 Q1020,50 1080,80 Q1140,110 1200,95 L1200,180 Z" fill="#9D8AC9"/>
+      <path d="M0,180 L0,140 Q80,115 160,130 Q240,145 320,115 Q400,85 480,110 Q560,135 640,105 Q720,75 800,110 Q880,145 960,120 Q1040,95 1120,125 Q1180,145 1200,135 L1200,180 Z" fill="#B5A4E3" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <!-- Osaka Castle silhouette -->
+  <div class="castle-bg">
+    <svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg">
+      <!-- Stone base wall -->
+      <path d="M50,480 L50,420 Q50,415 55,415 L645,415 Q650,415 650,420 L650,480 Z" fill="#5A4A8A"/>
+      <!-- Mid stone -->
+      <path d="M120,415 L120,380 L580,380 L580,415 Z" fill="#6C5CE7"/>
+
+      <!-- Tower base (bottom floor) -->
+      <rect x="180" y="335" width="340" height="50" fill="#FFFFFF" stroke="#5A4A8A" stroke-width="2"/>
+      <!-- Roof 1 (curved eaves) -->
+      <path d="M160,335 Q160,320 175,318 L525,318 Q540,320 540,335 Q540,310 350,285 Q160,310 160,335 Z" fill="#3D2E5C"/>
+      <!-- Eave tips -->
+      <path d="M160,335 Q150,338 145,348 L155,348 Z" fill="#3D2E5C"/>
+      <path d="M540,335 Q550,338 555,348 L545,348 Z" fill="#3D2E5C"/>
+
+      <!-- Floor 2 -->
+      <rect x="210" y="265" width="280" height="50" fill="#FFFFFF" stroke="#5A4A8A" stroke-width="2"/>
+      <path d="M195,265 Q195,250 210,248 L490,248 Q505,250 505,265 Q505,240 350,220 Q195,240 195,265 Z" fill="#3D2E5C"/>
+
+      <!-- Floor 3 -->
+      <rect x="240" y="200" width="220" height="45" fill="#FFFFFF" stroke="#5A4A8A" stroke-width="2"/>
+      <path d="M225,200 Q225,188 240,186 L460,186 Q475,188 475,200 Q475,180 350,165 Q225,180 225,200 Z" fill="#3D2E5C"/>
+
+      <!-- Floor 4 -->
+      <rect x="265" y="140" width="170" height="45" fill="#FFFFFF" stroke="#5A4A8A" stroke-width="2"/>
+      <path d="M252,140 Q252,128 265,127 L435,127 Q448,128 448,140 Q448,120 350,108 Q252,120 252,140 Z" fill="#3D2E5C"/>
+
+      <!-- Top floor (gold trim) -->
+      <rect x="290" y="80" width="120" height="45" fill="#FFFFFF" stroke="#C9A227" stroke-width="2"/>
+      <line x1="290" y1="98" x2="410" y2="98" stroke="#C9A227" stroke-width="2.5"/>
+      <line x1="290" y1="108" x2="410" y2="108" stroke="#C9A227" stroke-width="2.5"/>
+      <!-- Top roof -->
+      <path d="M278,80 Q278,70 290,69 L410,69 Q422,70 422,80 Q422,55 350,38 Q278,55 278,80 Z" fill="#3D2E5C"/>
+
+      <!-- Shachihoko (golden dolphins on roof) -->
+      <path d="M295,40 Q298,28 305,32 Q310,36 305,40 Z" fill="#C9A227"/>
+      <path d="M405,40 Q402,28 395,32 Q390,36 395,40 Z" fill="#C9A227"/>
+
+      <!-- Center spire -->
+      <rect x="348" y="20" width="4" height="22" fill="#3D2E5C"/>
+      <circle cx="350" cy="18" r="4" fill="#C9A227"/>
+
+      <!-- Windows (small dark squares on each floor) -->
+      <g fill="#3D2E5C">
+        <rect x="220" y="345" width="10" height="14"/>
+        <rect x="245" y="345" width="10" height="14"/>
+        <rect x="445" y="345" width="10" height="14"/>
+        <rect x="470" y="345" width="10" height="14"/>
+        <rect x="250" y="278" width="10" height="14"/>
+        <rect x="275" y="278" width="10" height="14"/>
+        <rect x="415" y="278" width="10" height="14"/>
+        <rect x="440" y="278" width="10" height="14"/>
+        <rect x="285" y="213" width="10" height="13"/>
+        <rect x="395" y="213" width="10" height="13"/>
+        <rect x="305" y="153" width="10" height="13"/>
+        <rect x="375" y="153" width="10" height="13"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Intro -->
+  <div class="section">
+    <div class="intro-card">
+      <div class="dday" id="ddayBadge"></div>
+      <div class="plane-icon">✈️</div>
+      <div class="intro-jp">大阪家族旅行</div>
+      <div class="intro-name">오사카 가족여행</div>
+      <div class="intro-sub">우리 가족 6명의 봄 여행 🌸</div>
+      <div class="intro-dates">
+        📅 4월 30일(목) ~ 5월 3일(일) · 3박 4일
+      </div>
+      <div class="scroll-hint">
+        아래로 스크롤!
+        <span class="scroll-arrow">↓</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Family + Weather + Itinerary + Care -->
+  <div class="section detail-section">
+
+    <!-- Family -->
+    <div class="card" id="familyCard">
+      <div class="card-icon">👨‍👩‍👧‍👦</div>
+      <div class="card-title">우리 가족</div>
+      <div class="card-subtitle">FAMILY · 6人</div>
+      <div class="family-grid">
+        <div class="family-member">
+          <div class="fm-emoji">👨</div>
+          <div class="fm-name">철희</div>
+          <div class="fm-role">아빠</div>
+        </div>
+        <div class="family-member">
+          <div class="fm-emoji">👩</div>
+          <div class="fm-name">미현</div>
+          <div class="fm-role">엄마</div>
+          <span class="fm-tag foot">발 케어 🦶</span>
+        </div>
+        <div class="family-member">
+          <div class="fm-emoji">🧑‍💼</div>
+          <div class="fm-name">혁진</div>
+          <div class="fm-role">나</div>
+        </div>
+        <div class="family-member">
+          <div class="fm-emoji">🤰</div>
+          <div class="fm-name">수진</div>
+          <div class="fm-role">누나</div>
+          <span class="fm-tag preg">임산부 🌸</span>
+          <span class="fm-tag cast">팔 깁스</span>
+        </div>
+        <div class="family-member">
+          <div class="fm-emoji">🧑</div>
+          <div class="fm-name">성훈</div>
+          <div class="fm-role">매형</div>
+        </div>
+        <div class="family-member">
+          <div class="fm-emoji">👶</div>
+          <div class="fm-name">쿄비</div>
+          <div class="fm-role">막내</div>
+          <span class="fm-tag baby">태명 💚</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flight -->
+    <div class="card" id="flightCard">
+      <div class="card-icon">✈️</div>
+      <div class="card-title">비행 일정</div>
+      <div class="card-subtitle">FLIGHT INFO</div>
+
+      <div class="flight-route">
+        <div class="flight-label go">🛫 가는 편 · 4/30 (목)</div>
+        <div class="flight-line">
+          <div class="flight-airport">
+            <div class="flight-time">09:40</div>
+            <div class="flight-code">ICN · 인천</div>
+          </div>
+          <div class="flight-arrow">✈</div>
+          <div class="flight-airport right">
+            <div class="flight-time">11:50</div>
+            <div class="flight-code">KIX · 간사이</div>
+          </div>
+        </div>
+        <div class="flight-duration">비행 약 2시간 10분 · JST 기준 도착</div>
+        <div class="flight-meta">
+          <span>🧳 수화물 15kg</span>
+          <span>⏰ 7:40까지 공항 도착</span>
+        </div>
+      </div>
+
+      <div class="flight-route">
+        <div class="flight-label back">🛬 오는 편 · 5/3 (일)</div>
+        <div class="flight-line">
+          <div class="flight-airport">
+            <div class="flight-time">16:00</div>
+            <div class="flight-code">KIX · 간사이</div>
+          </div>
+          <div class="flight-arrow">✈</div>
+          <div class="flight-airport right">
+            <div class="flight-time">18:10</div>
+            <div class="flight-code">ICN · 인천</div>
+          </div>
+        </div>
+        <div class="flight-duration">비행 약 2시간 10분</div>
+        <div class="flight-meta">
+          <span>🧳 수화물 15kg</span>
+          <span>⏰ 13:30까지 공항 도착</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hotel -->
+    <div class="card" id="hotelCard">
+      <div class="card-icon">🏨</div>
+      <div class="card-title">우리 호텔</div>
+      <div class="card-subtitle">HOTEL · NAMBA</div>
+
+      <div class="hotel-highlight">
+        <div class="hotel-stars">⭐⭐⭐⭐⭐ 5성급</div>
+        <div class="hotel-name">스위소텔 난카이 오사카</div>
+        <div class="hotel-name-en">Swissôtel Nankai Osaka</div>
+        <div class="hotel-desc">
+          난카이 난바역 바로 위에 있는 5성급 호텔.<br>
+          간사이공항 라피트가 호텔 아래 역에 정차하고<br>
+          도톤보리·신사이바시도 도보 5분 거리라<br>
+          이번 여행 동선에 최적 ✨
+        </div>
+
+        <div class="hotel-info-grid">
+          <div class="hotel-info-item">
+            <div class="hotel-info-label">📍 위치</div>
+            <div class="hotel-info-value">난바 5-1-60</div>
+          </div>
+          <div class="hotel-info-item">
+            <div class="hotel-info-label">🕐 체크인</div>
+            <div class="hotel-info-value">15:00</div>
+          </div>
+          <div class="hotel-info-item">
+            <div class="hotel-info-label">🕐 체크아웃</div>
+            <div class="hotel-info-value">12:00</div>
+          </div>
+          <div class="hotel-info-item">
+            <div class="hotel-info-label">🌐 층수</div>
+            <div class="hotel-info-value">36F</div>
+          </div>
+        </div>
+
+        <div class="hotel-perks">
+          <div class="hotel-perks-title">우리 가족에게 좋은 점</div>
+          <div class="hotel-perk">♿ 배리어프리 룸 + 휠체어 대여</div>
+          <div class="hotel-perk">🤰 임산부 어메니티 컨시어지 요청 가능</div>
+          <div class="hotel-perk">🚇 호텔 ↔ 난바역 직결 (비 안 맞음)</div>
+          <div class="hotel-perk">🛁 욕조 있음 — 엄마 발 찜질 OK</div>
+          <div class="hotel-perk">🛍️ 다카시마야 백화점 직결 (식당가/면세)</div>
+        </div>
+
+        <div class="hotel-access">
+          <div class="hotel-access-title">주요 동선 접근</div>
+          <div class="hotel-route-row">
+            <span class="hotel-route-icon">🚄</span>
+            <span>간사이공항 ↔ 난카이 라피트 직결</span>
+            <span class="hotel-route-time">약 40분</span>
+          </div>
+          <div class="hotel-route-row">
+            <span class="hotel-route-icon">🍡</span>
+            <span>도톤보리 · 신사이바시</span>
+            <span class="hotel-route-time">도보 5~7분</span>
+          </div>
+          <div class="hotel-route-row">
+            <span class="hotel-route-icon">🏯</span>
+            <span>오사카성 (지하철 환승)</span>
+            <span class="hotel-route-time">약 25분</span>
+          </div>
+          <div class="hotel-route-row">
+            <span class="hotel-route-icon">🐠</span>
+            <span>가이유칸 (지하철 1회 환승)</span>
+            <span class="hotel-route-time">약 30분</span>
+          </div>
+          <div class="hotel-route-row">
+            <span class="hotel-route-icon">🌃</span>
+            <span>우메다 스카이빌딩</span>
+            <span class="hotel-route-time">약 20분</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weather -->
+    <div class="card" id="weatherCard">
+      <div class="card-icon">🌤️</div>
+      <div class="card-title">오사카 날씨</div>
+      <div class="card-subtitle">JMA · 일본 기상청</div>
+      <div class="weather-days">
+        <div class="weather-day rainy">
+          <div>
+            <div class="wd-date">4/30</div>
+            <span class="wd-day">목 · 도착</span>
+          </div>
+          <div class="wd-info">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="wd-icon">☔</span>
+              <div>
+                <div class="wd-cond">흐림 → 오후 비</div>
+                <div class="wd-temp">14° / 17°</div>
+              </div>
+            </div>
+            <div class="wd-pop-split">
+              <span class="low">오전 40%</span>
+              <span class="high">오후 70%</span>
+              <span class="high">밤 80%</span>
+            </div>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="weather-day rainy">
+          <div>
+            <div class="wd-date">5/1</div>
+            <span class="wd-day">금</span>
+          </div>
+          <div class="wd-info">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="wd-icon">🌧️</span>
+              <div>
+                <div class="wd-cond">비</div>
+                <div class="wd-temp">14° / 20°</div>
+              </div>
+            </div>
+            <div class="wd-pop">강수확률 80%</div>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="weather-day sunny">
+          <div>
+            <div class="wd-date">5/2</div>
+            <span class="wd-day">토</span>
+          </div>
+          <div class="wd-info">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="wd-icon">☀️</span>
+              <div>
+                <div class="wd-cond">맑음 가끔 흐림</div>
+                <div class="wd-temp">13° / 25°</div>
+              </div>
+            </div>
+            <div class="wd-pop" style="color:#FFA000;">강수확률 20%</div>
+            <span class="wd-best">⭐ 베스트 데이</span>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="weather-day cloudy">
+          <div>
+            <div class="wd-date">5/3</div>
+            <span class="wd-day">일 · 출국</span>
+          </div>
+          <div class="wd-info">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="wd-icon">⛅</span>
+              <div>
+                <div class="wd-cond">흐림 가끔 비</div>
+                <div class="wd-temp">16° / 25°</div>
+              </div>
+            </div>
+            <div class="wd-pop">강수확률 60%</div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+      <div class="weather-source">
+        ※ 大阪管区気象台 2026-04-29 11:00 발표 기준 · 출국 전 재확인 추천
+      </div>
+    </div>
+
+    <!-- Itinerary -->
+    <div class="card" id="itineraryCard">
+      <div class="card-icon">🗺️</div>
+      <div class="card-title">여행 코스</div>
+      <div class="card-subtitle">ITINERARY · 걷기 적은 동선</div>
+
+      <div class="day-tabs">
+        <div class="day-tab active" data-day="1" onclick="switchDay(1)">DAY 1<br><span style="font-size:0.7rem;">4/30 목</span></div>
+        <div class="day-tab" data-day="2" onclick="switchDay(2)">DAY 2<br><span style="font-size:0.7rem;">5/1 금</span></div>
+        <div class="day-tab" data-day="3" onclick="switchDay(3)">DAY 3<br><span style="font-size:0.7rem;">5/2 토</span></div>
+        <div class="day-tab" data-day="4" onclick="switchDay(4)">DAY 4<br><span style="font-size:0.7rem;">5/3 일</span></div>
+      </div>
+
+      <!-- DAY 1 -->
+      <div class="day-content active" data-day="1">
+        <div class="day-header">
+          <div class="day-title">도착 · 가볍게 스타트 🛬</div>
+          <span class="day-weather-badge">☔ 오전 40% → 오후 70% → 밤 80%</span>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">새벽 6:00</div>
+            <div class="tl-place">집 → 인천공항</div>
+            <div class="tl-desc">7:40까지 인천공항 도착. 출발 2시간 전 체크인. 짐 15kg 한도 — 무게 미리 체크.</div>
+            <div class="tl-care">🦴 누나 깁스 — 짐은 모두 매형/혁진이가</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">09:40 → 11:50</div>
+            <div class="tl-place">ICN ✈️ KIX (2시간 10분)</div>
+            <div class="tl-desc">인천 → 간사이공항. 누나는 좌석 아래 짐 X — 승무원에게 도움 요청. 임산부석 가능하면 미리 신청.</div>
+            <div class="tl-care">🤰 통로 좌석 추천 · 화장실 자주</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:00 ~ 13:00</div>
+            <div class="tl-place">입국심사 + 짐찾기 + 이동</div>
+            <div class="tl-desc">간사이공항에서 휠체어 무료 대여. <strong>난카이 라피트로 난바역 직행 (40분)</strong> — 호텔이 역 바로 위라 환승 0번. 비도 안 맞음.</div>
+            <div class="tl-care">♿ 공항 안내데스크 → 휠체어 요청</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">13:30 ~ 14:00</div>
+            <div class="tl-place">스위소텔 난카이 오사카 도착 🏨</div>
+            <div class="tl-desc">체크인 15:00이라 짐만 먼저 맡기고 다카시마야(직결) 식당가에서 가벼운 점심. 비 80% 시작이라 실내 해결.</div>
+            <div class="tl-care">🦶 엄마 발 푹 쉬기 · 욕조 따뜻한 물</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">15:00 ~ 17:00</div>
+            <div class="tl-place">호텔 휴식 🛏️</div>
+            <div class="tl-desc">새벽부터 움직였으니 누나·엄마 푹 쉬기. 비 한참 올 시간이라 무리 X.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">저녁 7:00</div>
+            <div class="tl-place">호텔 인근 백화점 식당가</div>
+            <div class="tl-desc">우메다 한큐백화점 17층 또는 난바 다카시마야 — 의자 좌석, 다양한 메뉴, 비 안 맞음.</div>
+            <div class="tl-care warn">🤰 회·날달걀·생햄 X · 따뜻한 우동/스키야키/덴푸라</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 2 -->
+      <div class="day-content" data-day="2">
+        <div class="day-header">
+          <div class="day-title">종일 실내 데이 ☔</div>
+          <span class="day-weather-badge">🌧️ 비 80% · 14~20°C · 우산 필수</span>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">오전 10시</div>
+            <div class="tl-place">가이유칸 수족관 🐠</div>
+            <div class="tl-desc">세계 최대급 실내 수족관. 위에서 아래로 내려오는 동선이라 거의 평지+엘리베이터. 고래상어가 백미.</div>
+            <div class="tl-care">♿ 휠체어 무료 대여 · 베이비카 OK · 임산부 우대</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">오후 1시</div>
+            <div class="tl-place">텐포잔 마켓플레이스 점심 🍱</div>
+            <div class="tl-desc">수족관 바로 옆 쇼핑몰. 나니와 쿠이신보 요코초(레트로 식당가)에서 오사카 향토음식 — 이동 거의 0.</div>
+            <div class="tl-care">🦶 도보 2분 · 좌석 많음</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">오후 4시</div>
+            <div class="tl-place">우메다 스카이빌딩 공중정원 🌃</div>
+            <div class="tl-desc">엘리베이터+에스컬레이터로 173m 전망대. 비 오면 안개 운치 ☁️. 안 가면 한큐백화점/그랜드 프론트 우메다 실내 쇼핑.</div>
+            <div class="tl-care">♿ 전망대까지 휠체어 동선 OK</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">저녁 7시</div>
+            <div class="tl-place">우메다 저녁 + 호텔 복귀</div>
+            <div class="tl-desc">호텔 가까운 곳에서 가볍게. 누나·엄마 무리 X.</div>
+            <div class="tl-care warn">🦶 발 아픈 엄마 · 오늘 많이 걸으면 내일 못 걸음</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 3 -->
+      <div class="day-content" data-day="3">
+        <div class="day-header">
+          <div class="day-title">⭐ 오사카 하이라이트 데이</div>
+          <span class="day-weather-badge">☀️ 맑음 · 13~25°C · 야외 베스트</span>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">오전 10시</div>
+            <div class="tl-place">오사카성 🏯</div>
+            <div class="tl-desc">JR 오사카조코엔역 하차 → 천수각까지 약 800m. 천수각 내부는 엘리베이터 있음(8층까지). 휠체어 무료 대여.</div>
+            <div class="tl-care">♿ 천수각 입구까지 카트(전동) 운행 · 미리 안내소에 휠체어 요청</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">오후 12시 30분</div>
+            <div class="tl-place">점심 (오사카성 근처)</div>
+            <div class="tl-desc">조테라스 오사카(JO-TERRACE OSAKA) 또는 JR 오사카조코엔역 인근 카페·레스토랑.</div>
+            <div class="tl-care">🌸 야외 테라스 좋은 날 · 사쿠라 막바지</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">오후 3시</div>
+            <div class="tl-place">신사이바시스지 + 도톤보리 🍡</div>
+            <div class="tl-desc">신사이바시스지는 지붕 있는 아케이드라 비 와도 OK. 도톤보리 글리코 사인 앞 가족사진 필수. 강변 바로 옆까지 갈 수 있는 동선만 짧게.</div>
+            <div class="tl-care">🤰 카니도라쿠·이치란 같은 좁은 가게 X · 여유 있는 곳으로</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">저녁 7시</div>
+            <div class="tl-place">도톤보리 명물 저녁 🍢</div>
+            <div class="tl-desc">오코노미야키(미즈노), 쿠시카츠(다루마) — 임산부도 OK한 따뜻한 음식. 자리 미리 예약.</div>
+            <div class="tl-care warn">🤰 회/사시미 X · 다코야키는 식혀서 · 가다랑어포 살짝</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 4 -->
+      <div class="day-content" data-day="4">
+        <div class="day-header">
+          <div class="day-title">아침 쇼핑 + 출국 🛫</div>
+          <span class="day-weather-badge">⛅ 흐림 가끔 비 60% · 16~25°C</span>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-time">오전 9:00</div>
+            <div class="tl-place">호텔 조식 + 짐 정리</div>
+            <div class="tl-desc">짐 미리 싸놓고 체크아웃. 시간 빠듯하니 일찍 움직이기.</div>
+            <div class="tl-care">💡 호텔에 짐 맡기고 잠깐 쇼핑 가능</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">오전 10:30</div>
+            <div class="tl-place">난바 다카시마야 쇼핑 🛍️</div>
+            <div class="tl-desc">호텔에서 직결! 지하 식품관에서 모찌·요칸·초콜릿. 비 와도 호텔 → 백화점 실내로 이동. 면세는 5층 카운터.</div>
+            <div class="tl-care">🦶 의자·화장실 OK · 면세 카운터 OK</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">12:00</div>
+            <div class="tl-place">가벼운 점심 🍜</div>
+            <div class="tl-desc">백화점 식당가에서 우동·소바 같은 가벼운 메뉴. 비행 전 무거운 음식 X.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">13:00</div>
+            <div class="tl-place">호텔 → 간사이공항 이동</div>
+            <div class="tl-desc">호텔에서 짐 픽업 → 난카이 라피트 또는 공항 리무진(좌석 보장). 비 오면 택시·리무진 추천.</div>
+            <div class="tl-care warn">⏰ 출발 2.5시간 전 도착 = 13:30까지 KIX</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">13:30</div>
+            <div class="tl-place">간사이공항 도착 ✈️</div>
+            <div class="tl-desc">체크인 + 면세 + 출국심사. 누나 임산부석/통로 좌석 다시 확인. 휠체어 서비스도 사전 요청.</div>
+            <div class="tl-care">♿ 항공사 카운터에 휠체어/임산부 안내 요청</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-time">16:00 → 18:10</div>
+            <div class="tl-place">KIX ✈️ ICN (2시간 10분)</div>
+            <div class="tl-desc">간사이 → 인천. 도착 후 짐 찾고 귀가.</div>
+            <div class="tl-care">🌸 4일간 정말 수고했어!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Care Guide -->
+    <div class="card" id="careCard">
+      <div class="card-icon">💝</div>
+      <div class="card-title">가족 케어 가이드</div>
+      <div class="card-subtitle">SOFT TIPS</div>
+
+      <div class="care-list">
+        <div class="care-item preg">
+          <div class="care-head">🤰 누나 · 임산부 케어</div>
+          <div class="care-body">
+            • 회·날달걀·생햄·블루치즈 X (스시 가게 갈 때 익힌 것만)<br>
+            • 카페인 줄이기 (녹차/말차 디저트도 적당히)<br>
+            • 30분마다 앉아서 휴식 · 화장실 자주 (수족관·백화점 동선 좋음)<br>
+            • 일본 임산부 마크(マタニティマーク) 받으면 지하철 우대석 OK<br>
+            • 응급 시: 119 (구급차) · 호텔 컨시어지 즉시 호출
+          </div>
+        </div>
+
+        <div class="care-item cast">
+          <div class="care-head">🦴 누나 팔 깁스</div>
+          <div class="care-body">
+            • 무거운 가방 X (매형/혁진이가 들기)<br>
+            • 좁은 가게·붐비는 곳 피하기 (이치란 같은 칸막이 좌석 X)<br>
+            • 비행기 짐칸 위 X — 좌석 아래 또는 도와달라고 요청<br>
+            • 깁스 비 안 맞게 큰 우산 + 비닐 한 장 챙기기
+          </div>
+        </div>
+
+        <div class="care-item foot">
+          <div class="care-head">🦶 엄마 발 통증</div>
+          <div class="care-body">
+            • 핵심: <strong>휠체어 적극 활용</strong> — 가이유칸·오사카성·백화점 모두 무료 대여<br>
+            • 푹신한 운동화 + 깔창. 새 신발 X<br>
+            • 하루 보행 거리 짧게 — 동선 짜놨으니 이대로<br>
+            • 저녁마다 따뜻한 물에 발 담그기 (호텔 욕조)<br>
+            • 통증 심하면 즉시 택시. 무리 X
+          </div>
+        </div>
+
+        <div class="care-item all">
+          <div class="care-head">🌸 모두 함께</div>
+          <div class="care-body">
+            • 택시 적극 활용 (4명 이상이면 점보택시 미리 콜)<br>
+            • 식당 예약 — 자리 기다리지 않게<br>
+            • 누나·엄마 페이스에 맞추기. 사진은 천천히<br>
+            • 비 오는 날(목/금)은 무리 말고 호텔 일찍 복귀<br>
+            • 비상연락: 한국 영사관 콜센터 +82-2-3210-0404
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="card closing-card" id="closingCard">
+      <div class="card-icon">🌸</div>
+      <div class="closing-text">
+        우리 가족 첫<br>
+        오사카 여행 💕
+      </div>
+      <div class="closing-sub">
+        쿄비도 같이 가는 여행이라<br>
+        더 특별한 4일이 될 거야.<br><br>
+        누나는 무리 말고 천천히,<br>
+        엄마 발도 푹 쉬게 하면서<br>
+        예쁜 추억 가득 만들고 오자!
+      </div>
+      <div class="closing-sign">いってきます ✈️</div>
+    </div>
+
+  </div>
+
+  <script>
+    // Sakura petals — more abundant, varied sizes & speeds
+    function spawnPetal() {
+      const petals = ['🌸', '🌸', '🌸', '🌸', '🌺', '🌼', '✨'];
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.textContent = petals[Math.floor(Math.random() * petals.length)];
+      p.style.left = (Math.random() * 105 - 2) + 'vw';
+      const size = Math.random() * 1.2 + 0.7;
+      p.style.fontSize = size + 'rem';
+      p.style.opacity = (Math.random() * 0.4 + 0.6).toFixed(2);
+      const duration = Math.random() * 6 + 7;
+      p.style.animationDuration = duration + 's';
+      p.style.animationDelay = (Math.random() * 0.5) + 's';
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), (duration + 1) * 1000);
+    }
+    setInterval(spawnPetal, 380);
+    for (let i = 0; i < 14; i++) setTimeout(spawnPetal, i * 180);
+
+    // D-day (4/30 출발)
+    const tripDate = new Date('2026-04-30');
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    tripDate.setHours(0,0,0,0);
+    const diffDays = Math.ceil((tripDate - today) / (1000 * 60 * 60 * 24));
+    const ddayBadge = document.getElementById('ddayBadge');
+    if (diffDays > 0) ddayBadge.textContent = `D-${diffDays} · 출발까지`;
+    else if (diffDays === 0) ddayBadge.textContent = 'D-DAY · 출발! 🎉';
+    else if (diffDays >= -3) ddayBadge.textContent = `여행 ${Math.abs(diffDays)+1}일차 ☀️`;
+    else ddayBadge.textContent = `여행 끝 · D+${Math.abs(diffDays)}`;
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.card').forEach(el => observer.observe(el));
+
+    // Sparkle on click
+    document.addEventListener('click', (e) => {
+      const sparkles = ['🌸', '✨', '💕', '🌼', '🦋'];
+      const s = document.createElement('div');
+      s.className = 'sparkle-trail';
+      s.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+      s.style.left = e.clientX + 'px';
+      s.style.top = e.clientY + 'px';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1400);
+    });
+
+    // Day tabs
+    function switchDay(n) {
+      document.querySelectorAll('.day-tab').forEach(t => t.classList.toggle('active', t.dataset.day == n));
+      document.querySelectorAll('.day-content').forEach(c => c.classList.toggle('active', c.dataset.day == n));
+    }
+  </script>
+</body>
+</html>
